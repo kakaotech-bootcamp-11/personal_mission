@@ -15,8 +15,8 @@
 
 ### Day 2
 
-- [ ] CRUD 작업 구현: 데이터 생성(Create), 읽기(Read), 업데이트(Update), 삭제(Delete) 기능 구현
-- [ ] 인덱싱 구현: 성능 향상을 위한 인덱스 설정
+- [x] CRUD 작업 구현: 데이터 생성(Create), 읽기(Read), 업데이트(Update), 삭제(Delete) 기능 구현
+- [x] 인덱싱 구현: 성능 향상을 위한 인덱스 설정
 - [ ] 복잡한 쿼리 작성 및 최적화
 - [ ] 데이터 모델링: 유연한 스키마 설계 및 변경
 - [ ] 트랜잭션 처리 및 데이터 일관성 유지 방안 적용
@@ -36,6 +36,8 @@
 - [ ] 성능 테스트 및 분석 결과 보고서 작성
 - [ ] README 파일 작성: 사용 방법 및 설정 방법 명시
 - [ ] 최종 결과물 제출: 소스 코드, 설정 파일, 보고서, 시연 영상, README 파일
+
+
 
 # 🔎진행 및 완료 사항
 
@@ -65,11 +67,15 @@ RDBMS를 활용한 데이터베이스 설계 및 최적화의 필요성은 다�
 
 이를 통해 전체 시스템의 안정성과 성능을 보장할 수 있으며 이번 미션에서는 RDBMS 중 가장 대표주자라고 할 수 있는 MySQL을 활용하여 앞서 서술한 목적들을 달성하기 위해 데이터베이스 설계 및 최적화 방안을 모색하고, 실질적인 구현을 통해 그 효과를 검증해 보는 것이 목적이다.
 
+
+
 ## 💡솔루션 도출: MySQL을 활용한 데이터베이스 설계 및 최적화 방안 도출
 
 효율적이고 최적화된 데이터베이스 시스템을 구축하기 위해서는 MySQL을 활용한 다양한 설계 방식 혹은 최적화 방안을 고려해야 한다.
 
 MySQL은 관계형 데이터베이스 관리 시스템(RDBMS) 중 하나로, 높은 성능과 안정성을 제공하면서도 비교적 사용이 용이하여 널리 사용되는 기술 중 하나이다. 이번 미션에서는 MySQL을 활용하여 데이터베이스 설계 및 최적화를 통해 성능을 극대화하는 방안을 도출하고자 한다.
+
+
 
 ### **1. 데이터베이스 스키마 설계**
 
@@ -82,6 +88,8 @@ MySQL은 관계형 데이터베이스 관리 시스템(RDBMS) 중 하나로, 높
 - ERD(Entity-Relationship Diagram) 작성:
   - 데이터베이스 설계의 기초 단계로, ERD를 작성하여 테이블 간의 관계를 명확히 한다. 이를 통해 데이터 구조를 시각적으로 이해하고 설계 오류를 사전에 방지할 수 있다.
 
+
+
 ### **2. 인덱싱(Indexing)**
 
 - 기본 인덱스 생성:
@@ -93,6 +101,8 @@ MySQL은 관계형 데이터베이스 관리 시스템(RDBMS) 중 하나로, 높
 - 인덱스 유지보수:
   - 인덱스는 데이터를 삽입, 수정, 삭제할 때마다 갱신되므로, 불필요한 인덱스를 제거하여 성능을 유지한다.
 
+
+
 ### **3. 쿼리 최적화(Query Optimization)**
 
 - 쿼리 작성 시 최적화 기법 적용:
@@ -102,6 +112,8 @@ MySQL은 관계형 데이터베이스 관리 시스템(RDBMS) 중 하나로, 높
   - 자주 사용되는 쿼리 결과를 캐싱하여 데이터베이스 부하를 줄인다. MySQL의 Query Cache 기능을 활용하거나, 애플리케이션 레벨에서 캐싱을 구현할 수 있다.
 - 준비된 쿼리(Prepared Statement) 사용:
   - 준비된 쿼리를 사용하면, 쿼리 컴파일과 최적화 과정을 한 번만 수행하고, 이후에는 컴파일된 쿼리를 재사용할 수 있어 성능이 향상된다.
+
+
 
 ### **4. 데이터베이스 설정 및 튜닝**
 
@@ -114,6 +126,8 @@ MySQL은 관계형 데이터베이스 관리 시스템(RDBMS) 중 하나로, 높
   - 슬로우 쿼리 로그를 활성화하여 실행 시간이 긴 쿼리를 모니터링하고, 이를 최적화한다.
   - 예를 들어, 1초 이상의 실행 시간이 소요되는 쿼리를 로그에 기록하고 분석하여 성능을 향상시킨다.
 
+
+
 ### **5. 성능 모니터링 및 분석**
 
 - 모니터링 도구 활용:
@@ -122,6 +136,8 @@ MySQL은 관계형 데이터베이스 관리 시스템(RDBMS) 중 하나로, 높
 - 주기적인 성능 테스트:
   - 주기적으로 성능 테스트를 수행하여 데이터베이스의 성능 상태를 점검하고, 필요시 최적화 작업을 수행한다.
   - 예를 들어, 데이터베이스 부하 테스트 도구를 사용하여 대량의 데이터 삽입, 조회, 수정, 삭제 작업을 시뮬레이션한다.
+
+
 
 ### **6. 데이터 모델링 및 스키마 변경**
 
@@ -134,9 +150,13 @@ MySQL은 관계형 데이터베이스 관리 시스템(RDBMS) 중 하나로, 높
 
 이와 같은 다양한 설계 및 최적화 방안을 통해 MySQL 데이터베이스의 성능을 극대화하고, 안정적이고 효율적인 데이터 관리를 실현할 수 있다. 이번 프로젝트에서는 이러한 방안을 실제로 적용하여 데이터베이스를 설계하고 최적화하며, 그 효과를 검증할 것이다.
 
+
+
 ## 설계: 데이터베이스 스키마 및 CRUD 작업 설계
 
 이번 프로젝트에서는 간단한 블로그 시스템을 만든다고 가정하고 데이터베이스 스키마와 CRUD 작업을 설계해보겠습니다. 블로그 시스템은 다음과 같은 주요 기능을 포함합니다: 사용자 관리, 게시글 작성 및 조회, 댓글 작성 및 조회. 이러한 기능을 구현하기 위해 데이터베이스 스키마를 설계하고, 각 기능에 필요한 CRUD 작업을 정의합니다.
+
+
 
 ### **데이터베이스 스키마 설계**
 
@@ -149,6 +169,8 @@ MySQL은 관계형 데이터베이스 관리 시스템(RDBMS) 중 하나로, 높
 3. **댓글(Comment) 테이블**
    - 게시글에 대한 댓글 정보를 저장하는 테이블입니다.
    - 주요 컬럼: 댓글 ID(comment_id), 내용(content), 작성자 ID(user_id), 게시글 ID(post_id), 작성일자(created_at)
+
+
 
 ### **CRUD 작업 설계**
 
@@ -192,6 +214,8 @@ MySQL은 관계형 데이터베이스 관리 시스템(RDBMS) 중 하나로, 높
      - 특정 댓글을 삭제한다.
      - 요구사항: 댓글 ID를 입력받아 해당 댓글을 삭제한다.
 
+
+
 ## MySQL 설치 및 초기 설정
 
 이 작업에서는 MySQL 설치, 보안 설정, 초기 사용자 및 더미 데이터베이스 생성 등의 작업을 포함한다.
@@ -204,9 +228,13 @@ MySQL은 관계형 데이터베이스 관리 시스템(RDBMS) 중 하나로, 높
 - 터미널: iTerm2
 - MySQL: 8.3.0
 
+
+
 ### [Step 1] 터미널을 켠다.
 
 ![image](https://github.com/speardragon/kakaotech-bootcamp/assets/79521972/78aa7740-9eca-41e7-97c9-ae5d5fb98989)
+
+
 
 ### [Step 2] brew install mysql
 
@@ -227,6 +255,8 @@ Caveats(주의 사항)을 보면 root 계정 비밀번호 설정 없이 mysql만
   ![image](https://github.com/speardragon/kakaotech-bootcamp/assets/79521972/aedf31ce-795a-4f72-9196-3c7e12847670)
 
 그 다음, 아래 안내된 명령어인 `mysql_secure_installation`을 통해 설정을 마쳐 mysql 설정을 완료할 수 있다.
+
+
 
 - mysql_secure_installation
 
@@ -325,6 +355,8 @@ Caveats(주의 사항)을 보면 root 계정 비밀번호 설정 없이 mysql만
 
   Yes를 통해 변경사항을 즉시 적용시켜 줍니다.
 
+
+
 ### [Step 3] mysql 로그인
 
 이제 설치가 되었으니 기본 설정이 완료된 root 계정으로 로그인을 할 수 있다.
@@ -341,6 +373,8 @@ Caveats(주의 사항)을 보면 root 계정 비밀번호 설정 없이 mysql만
 
 만약 mysql 터미널을 종료하고 싶다면 `exit`을 입력하면 된다. mysql 서버 자체를 종료하고 싶다면 먼저 mysql 터미널이 종료된 상태에서 `mysql.server stop`을 입력하면 된다.
 
+
+
 ## 데이터베이스 및 테이블 생성
 
 이제 mysql을 사용할 수 있게 되었으니 데이터베이스 및 테이블을 생성할 수 있게 되었다.
@@ -355,9 +389,11 @@ SHOW DATABASES;
 
 반드시 세미콜론을 붙여주어야 명령어가 정상적으로 실행되며, 실수로 붙이지 못한 경우 그 다음 입력을 세미콜론만 입력 후 엔터를 눌러주면 명령어가 실행될 수 있다.
 
-![image](https://github.com/speardragon/kakaotech-bootcamp/assets/79521972/0ec97a93-6522-42a1-896c-1a0435de2e47)
+<img src="https://github.com/speardragon/kakaotech-bootcamp/assets/79521972/0ec97a93-6522-42a1-896c-1a0435de2e47" alt="image" style="zoom: 33%;" />
 
 위에 이미 생성된 데이터베이스들은 기본적으로 생성되어 있는 것들이며, 주로 설정, 계정 등과 관련된 정보를 담은 데이터베이스로 현재 Mysql의 설정이나 계정 및 권한이 궁금하다면 저 중 알맞은 데이터베이스로 쿼리를 날려 정보를 확인할 수 있다.
+
+
 
 ### 데이터베이스 생성
 
@@ -367,6 +403,8 @@ CREATE DATABASES (데이터베이스 이름)
 
 이 명령어는 새로운 데이터베이스를 하나 생성하는 명령어이다.
 
+
+
 ### 데이터베이스 사용
 
 데이터베이스를 만들기만 했다고 바로 사용할 수 있는 것은 아니다. 내가 특정 데이터베이스를 사용하겠다고 알리고 쿼리를 날려야 해당 데이터베이스의 정보를 가져올 수 있다.
@@ -375,15 +413,21 @@ CREATE DATABASES (데이터베이스 이름)
 use (데이터베이스 이름)
 ```
 
+
+
 ### 블로그를 위한 데이터베이스 생성 및 데이터베이스 사용
 
-![image](https://github.com/speardragon/kakaotech-bootcamp/assets/79521972/d0922c53-172d-4fbd-a375-0bab3fbc325d)
+<img src="https://github.com/speardragon/kakaotech-bootcamp/assets/79521972/d0922c53-172d-4fbd-a375-0bab3fbc325d" alt="image" style="zoom:50%;" />
 
 각 명령어를 입력해 blogDB라는 이름의 데이터베이스를 만들고 사용 명령어까지 입력한다.
+
+
 
 ### 데이터베이스 테이블 생성
 
 블로그 시스템을 위해 사용자(User), 게시글(Post), 댓글(Comment) 테이블을 생성한다.
+
+
 
 1. **사용자(User) 테이블 생성**:
 
@@ -398,6 +442,8 @@ use (데이터베이스 이름)
        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
      );
      ```
+
+
 
 2. **게시글(Post) 테이블 생성**:
 
@@ -415,6 +461,8 @@ use (데이터베이스 이름)
   );
   ```
 
+
+
 3. **댓글(Comment) 테이블 생성:**
 
 - 게시글에 대한 댓글 정보를 저장하는 테이블을 생성한다.
@@ -431,9 +479,13 @@ use (데이터베이스 이름)
   );
   ```
 
+
+
 ## 데이터 삽입을 위한 스키마 설계 및 구현
 
 이제 데이터 삽입을 위해 각 테이블 별로 스키마를 세부적으로 설계하고 실제로 삽입까지 해볼 것이다.
+
+
 
 ### **사용자(User) 테이블 스키마 설계**
 
@@ -446,6 +498,8 @@ use (데이터베이스 이름)
   - **`email`**: 문자열, 고유, 이메일 주소
   - **`password`**: 문자열, 암호화된 비밀번호
   - **`created_at`**: 타임스탬프, 사용자가 가입한 날짜와 시간
+
+
 
 ### **게시글(Post) 테이블 스키마 설계**
 
@@ -460,6 +514,8 @@ use (데이터베이스 이름)
   - **`created_at`**: 타임스탬프, 게시글 작성 날짜와 시간
   - **`updated_at`**: 타임스탬프, 게시글 수정 날짜와 시간
 
+
+
 ### **댓글(Comment) 테이블 스키마 설계**
 
 - **목적**: 게시글에 대한 댓글 정보를 저장하고 관리하기 위한 테이블입니다.
@@ -471,6 +527,14 @@ use (데이터베이스 이름)
   - **`user_id`**: 정수형, 작성자 ID, 외래 키 (User 테이블 참조)
   - **`post_id`**: 정수형, 게시글 ID, 외래 키 (Post 테이블 참조)
   - **`created_at`**: 타임스탬프, 댓글 작성 날짜와 시간
+
+
+
+### 데이터베이스 ERD 설계
+
+<img width="952" alt="image" src="https://github.com/kakaotech-bootcamp-11/personal_mission/assets/79521972/fad8da0d-2c96-4084-bb4b-cb215659fde1">
+
+
 
 ### **데이터 삽입 스키마 구현**
 
@@ -486,6 +550,8 @@ INSERT INTO User (username, email, password) VALUES
 ('charlie', 'charlie@example.com', 'password789');
 ```
 
+
+
 **2. 게시글(Post) 데이터 삽입**
 
 ```sql
@@ -496,6 +562,8 @@ INSERT INTO Post (title, content, user_id) VALUES
 ('Third Post', 'This is the content of the third post', 1);
 ```
 
+
+
 **3. 댓글(Comment) 데이터 삽입**
 
 ```sql
@@ -505,6 +573,8 @@ INSERT INTO Comment (content, user_id, post_id) VALUES
 ('Another comment on the first post', 3, 1),
 ('Comment on the second post', 1, 2);
 ```
+
+
 
 ### **데이터 확인**
 
@@ -525,11 +595,13 @@ SELECT * FROM Comment;
 
 이 과정을 통해 데이터 삽입, 조회, 수정, 삭제와 같은 CRUD 작업을 수행할 수 있는 기반을 마련하였다.
 
+
+
 # CRUD 작업 구현: 데이터 생성(Create), 읽기(Read), 업데이트(Update), 삭제(Delete)
 
-### CRUD 작업 구현: 데이터 생성(Create), 읽기(Read), 업데이트(Update), 삭제(Delete)
-
 이 단계에서는 블로그 시스템의 사용자(User), 게시글(Post), 댓글(Comment) 테이블에 대해 데이터 생성(Create), 읽기(Read), 업데이트(Update), 삭제(Delete) 작업을 구현합니다. 각 작업에 대한 요구사항을 중심으로 설명하고, 필요한 SQL 쿼리와 예제를 포함합니다.
+
+
 
 #### 1. 사용자(User) 관리
 
@@ -537,33 +609,29 @@ SELECT * FROM Comment;
 
 - **요구사항**: 새로운 사용자를 등록한다. 사용자 이름, 이메일, 비밀번호를 입력받아 새로운 사용자를 생성한다. 이메일은 고유해야 하며, 비밀번호는 안전하게 저장되어야 한다.
 
-- SQL 쿼리
+- SQL 쿼리:
 
-  :
-
-  ```
-  sql
-  코드 복사
+  ```sql
   INSERT INTO User (username, email, password) VALUES ('alice', 'alice@example.com', 'password123');
   ```
+
+
 
 **Read (사용자 조회)**
 
 - **요구사항**: 특정 사용자의 정보를 조회한다. 사용자 ID나 이메일을 입력받아 해당 사용자의 정보를 반환한다.
 
-- SQL 쿼리
-
-  :
+- SQL 쿼리:
 
   ```
-  sql
-  코드 복사
   -- 사용자 ID로 조회
   SELECT * FROM User WHERE user_id = 1;
-
+  
   -- 이메일로 조회
   SELECT * FROM User WHERE email = 'alice@example.com';
   ```
+
+
 
 **Update (사용자 정보 수정)**
 
@@ -572,10 +640,10 @@ SELECT * FROM Comment;
 - SQL 쿼리:
 
   ```
-  sql
-  코드 복사
   UPDATE User SET username = 'Alice Wonderland', email = 'alice.w@example.com', password = 'newpassword123' WHERE user_id = 1;
   ```
+
+
 
 **Delete (사용자 삭제)**
 
@@ -584,10 +652,10 @@ SELECT * FROM Comment;
 - SQL 쿼리:
 
   ```
-  sql
-  코드 복사
   DELETE FROM User WHERE user_id = 1;
   ```
+
+
 
 #### 2. 게시글(Post) 관리
 
@@ -598,10 +666,10 @@ SELECT * FROM Comment;
 - SQL 쿼리:
 
   ```
-  sql
-  코드 복사
   INSERT INTO Post (title, content, user_id) VALUES ('First Post', 'This is the content of the first post', 1);
   ```
+
+
 
 **Read (게시글 조회)**
 
@@ -610,14 +678,14 @@ SELECT * FROM Comment;
 - SQL 쿼리:
 
   ```
-  sql
-  코드 복사
   -- 모든 게시글 조회
   SELECT * FROM Post;
-
+  
   -- 특정 게시글 조회
   SELECT * FROM Post WHERE post_id = 1;
   ```
+
+
 
 **Update (게시글 수정)**
 
@@ -626,22 +694,22 @@ SELECT * FROM Comment;
 - SQL 쿼리:
 
   ```
-  sql
-  코드 복사
   UPDATE Post SET title = 'Updated First Post', content = 'This is the updated content of the first post' WHERE post_id = 1;
   ```
 
+
+
 **Delete (게시글 삭제)**
 
-- **요구사항**: 특정 게시글을 삭제한다. 게시글 ID를 입력받아 해당 게시글을 삭제한다. 관련된 댓글도 함께 삭제된다.
+- **요구사항**: 특정 게시글을 삭제한다. 게시글 ID를 입력받아 해당 게시글을 삭제한다. 관련된 댓글도 함께 삭제된다. 관리자거나 게시글을 올린 사용자만 삭제할 수 있다.
 
 - SQL 쿼리:
 
   ```
-  sql
-  코드 복사
   DELETE FROM Post WHERE post_id = 1;
   ```
+
+
 
 #### 3. 댓글(Comment) 관리
 
@@ -652,10 +720,10 @@ SELECT * FROM Comment;
 - SQL 쿼리:
 
   ```
-  sql
-  코드 복사
   INSERT INTO Comment (content, user_id, post_id) VALUES ('This is a comment on the first post', 2, 1);
   ```
+
+
 
 **Read (댓글 조회)**
 
@@ -664,10 +732,10 @@ SELECT * FROM Comment;
 - SQL 쿼리:
 
   ```
-  sql
-  코드 복사
   SELECT * FROM Comment WHERE post_id = 1;
   ```
+
+
 
 **Update (댓글 수정)**
 
@@ -676,36 +744,267 @@ SELECT * FROM Comment;
 - SQL 쿼리:
 
   ```
-  sql
-  코드 복사
   UPDATE Comment SET content = 'This is the updated comment' WHERE comment_id = 1;
   ```
 
+
+
 **Delete (댓글 삭제)**
 
-- **요구사항**: 특정 댓글을 삭제한다. 댓글 ID를 입력받아 해당 댓글을 삭제한다.
+- **요구사항**: 특정 댓글을 삭제한다. 댓글 ID를 입력받아 해당 댓글을 삭제한다. 댓글을 단 사용자거나 관리자만 지울 수 있다.
 
 - SQL 쿼리:
 
   ```
-  sql
-  코드 복사
   DELETE FROM Comment WHERE comment_id = 1;
   ```
 
+
+
+
+
 # 인덱싱 구현: 성능 향상을 위한 인덱스 설정
+
+인덱스는 데이터베이스 성능 향상을 위해 사용되는 중요한 도구이다. 
+
+인덱스는 테이블에서 데이터를 빠르게 검색할 수 있도록 돕는 자료 구조이기 때문에 인덱스를 적절히 사용하면 데이터 검색 속도를 크게 향상시킬 수 있지만, 그렇다고 인덱스를 과도하게 사용하면 데이터 삽입, 삭제, 업데이트 성능이 저하될 수도 있습니다. 
+
+
+
+## 1. 인덱스 개요
+
+- **기본 인덱스**: 기본 키(primary key)는 자동으로 인덱스가 생성되며, 유니크 키(unique key)도 인덱스가 생성됩니다.
+- **보조 인덱스**: 검색 속도를 향상시키기 위해 추가로 생성하는 인덱스이다.
+- **복합 인덱스**: 두 개 이상의 컬럼을 조합한 인덱스입니다.
+
+
+
+## 2. 인덱싱 설계
+
+인덱스를 설계할 때는 테이블에서 자주 사용되는 쿼리와 검색 조건을 분석하여 효율적인 인덱스를 설정해야 한다. 블로그 시스템에서 다음과 같은 인덱스를 설계한다:
+
+- User 테이블
+  - `email`: 사용자 이메일을 자주 검색하므로 인덱스를 설정합니다.
+- Post 테이블
+  - `user_id`: 작성자별로 게시글을 검색할 때 유용한다.
+  - `title`: 게시글 제목을 자주 검색하는 경우에 유용한다.
+- Comment 테이블
+  - `user_id`: 사용자별로 댓글을 검색할 때 유용한다.
+  - `post_id`: 게시글별로 댓글을 검색할 때 유용한다.
+
+
+
+## 3. 인덱스 설정 SQL
+
+각 테이블에 대한 인덱스를 설정하는 SQL 쿼리는 다음과 같습니다:
+
+```sql
+-- 데이터베이스 사용
+USE blogDB;
+
+-- User 테이블에 인덱스 설정
+CREATE INDEX idx_user_email ON User (email);
+
+-- Post 테이블에 인덱스 설정
+CREATE INDEX idx_post_user_id ON Post (user_id);
+CREATE INDEX idx_post_title ON Post (title);
+
+-- Comment 테이블에 인덱스 설정
+CREATE INDEX idx_comment_user_id ON Comment (user_id);
+CREATE INDEX idx_comment_post_id ON Comment (post_id);
+```
+
+
+
+이 보고서는 블로그 시스템의 데이터베이스 성능 향상을 위한 인덱스 설계 및 구현 과정에 대해 설명합니다. 인덱스는 데이터 검색 속도를 크게 향상시키며, 블로그 시스템의 사용자, 게시글, 댓글 데이터를 효율적으로 관리할 수 있도록 돕습니다.
+
+
+
+#### 2. 인덱스 설계 원칙
+
+- **검색 속도 향상**: 자주 검색되는 컬럼에 인덱스를 설정하여 데이터 검색 속도를 향상시킵니다.
+- **데이터 무결성 유지**: 기본 키와 유니크 키는 자동으로 인덱스가 생성되며, 데이터의 무결성을 유지합니다.
+- **적절한 인덱스 사용**: 과도한 인덱스 사용을 지양하고, 데이터 삽입, 삭제, 업데이트 성능 저하를 방지합니다.
+
+
+
+#### 3. 인덱스 설정
+
+1. **User 테이블 인덱스 설정**
+
+   - **목적**: 사용자 이메일로 빠르게 검색하기 위해 인덱스를 설정합니다.
+
+   - 쿼리:
+
+     ```
+     CREATE INDEX idx_user_email ON User (email);
+     ```
+
+2. **Post 테이블 인덱스 설정**
+
+   - **목적**: 작성자별로 게시글을 검색하고, 게시글 제목으로 검색할 때 성능을 향상시키기 위해 인덱스를 설정합니다.
+
+   - 쿼리:
+
+     ```
+     CREATE INDEX idx_post_user_id ON Post (user_id);
+     CREATE INDEX idx_post_title ON Post (title);
+     ```
+
+3. **Comment 테이블 인덱스 설정**
+
+   - **목적**: 사용자별로 댓글을 검색하고, 게시글별로 댓글을 검색할 때 성능을 향상시키기 위해 인덱스를 설정합니다.
+
+   - 쿼리:
+
+     ```
+     CREATE INDEX idx_comment_user_id ON Comment (user_id);
+     CREATE INDEX idx_comment_post_id ON Comment (post_id);
+     ```
+
+
+
+## 4. 인덱스 적용
+
+#### 1. DataGrip에서 데이터베이스 연결
+
+1. **DataGrip 실행**:
+   - DataGrip을 실행한다.
+2. **데이터베이스 연결 설정**:
+   - 왼쪽 상단의 `Database` 탭을 클릭한다.
+   - `+` 버튼을 클릭하고, `Data Source` > `MySQL`을 선택한다.
+   - `Host`, `Port`, `User`, `Password` 등을 입력하여 MySQL 데이터베이스에 연결한다.
+   - 연결 테스트(Test Connection) 버튼을 눌러 연결이 성공적으로 이루어졌는지 확인한다.
+   - `OK` 버튼을 눌러 연결을 저장한다.
+
+
+
+#### 2. SQL 콘솔 열기
+
+연결된 데이터베이스를 오른쪽 클릭하고, `Jump to Data Source` > `Console` > `New Console`을 선택하여 SQL 콘솔을 엽니다.
+
+
+
+#### 3. 인덱스 설정 SQL 실행
+
+아래 SQL 쿼리를 SQL 콘솔에 입력하고 실행하여 인덱스를 설정한다.
+
+```
+-- 데이터베이스 사용
+USE blogDB;
+
+-- User 테이블에 인덱스 설정
+CREATE INDEX idx_user_email ON User (email);
+
+-- Post 테이블에 인덱스 설정
+CREATE INDEX idx_post_user_id ON Post (user_id);
+CREATE INDEX idx_post_title ON Post (title);
+
+-- Comment 테이블에 인덱스 설정
+CREATE INDEX idx_comment_user_id ON Comment (user_id);
+CREATE INDEX idx_comment_post_id ON Comment (post_id);
+```
+
+
+
+#### 4. SQL 쿼리 실행
+
+1. **SQL 쿼리 입력**:
+   - 위의 SQL 쿼리를 SQL 콘솔 창에 복사하여 붙여넣는다.
+2. **쿼리 실행**:
+   - 쿼리를 선택한 상태에서 `Ctrl + Enter` 키를 눌러 실행한다.
+   - 쿼리가 성공적으로 실행되면, 아래쪽의 `Output` 창에서 결과를 확인할 수 있다.
+
+
+
+#### 5. 인덱스 확인
+
+- 데이터베이스 구조를 탐색하여 `User`, `Post`, `Comment` 테이블을 찾아본다.
+- 각 테이블을 클릭하여 테이블 구조를 확인하고, 설정된 인덱스를 확인한다.
+
+
+
+혹은 인덱스를 확인할 수 있는 쿼리를 통해 각 테이블마다의 상세 정보를 확인하여 Index 설정 관련 정보를 볼 수 있다.
+
+```
+SELECT
+    TABLE_NAME,
+    INDEX_NAME,
+    COLUMN_NAME,
+    SEQ_IN_INDEX,
+    NON_UNIQUE,
+    INDEX_TYPE
+FROM
+    information_schema.STATISTICS
+WHERE
+    TABLE_SCHEMA = 'blogDB'
+ORDER BY
+    TABLE_NAME, INDEX_NAME, SEQ_IN_INDEX;
+```
+
+
+
+<img width="1020" alt="image" src="https://github.com/speardragon/kakaotech-bootcamp/assets/79521972/86663361-10fe-4f80-a1e7-1123d2843157">
+
+
+
+#### 6. 성능 테스트
+
+1. **성능 테스트 시나리오 설정**:
+
+   - 인덱스를 설정하기 전과 후의 쿼리 실행 시간을 비교합니다.
+   - 예를 들어, 사용자 이메일로 검색하는 쿼리를 실행하여 실행 시간을 비교한다.
+
+2. **성능 테스트 쿼리**:
+
+   ```
+   -- 사용자 이메일로 검색
+   SELECT * FROM User WHERE email = 'alice@example.com';
+   
+   -- 작성자별로 게시글 검색
+   SELECT * FROM Post WHERE user_id = 1;
+   
+   -- 게시글 제목으로 검색
+   SELECT * FROM Post WHERE title = 'First Post';
+   
+   -- 게시글별로 댓글 검색
+   SELECT * FROM Comment WHERE post_id = 1;
+   ```
+
+3. **쿼리 실행 및 시간 측정**:
+
+   - 각 쿼리를 실행하고, 실행 시간을 기록합니다.
+   - 인덱스 설정 전과 후의 실행 시간을 비교하여 인덱스의 성능 향상 효과를 확인한다.
+
+
+
+
 
 # 복잡한 쿼리 작성 및 최적화
 
+
+
+
+
 # 데이터 모델링: 유연한 스키마 설계 및 변경
+
+
+
+
 
 # 트랜잭션 처리 및 데이터 일관성 유지 방안 적용
 
-- [ ] CRUD 작업 구현: 데이터 생성(Create), 읽기(Read), 업데이트(Update), 삭제(Delete) 기능 구현
-- [ ] 인덱싱 구현: 성능 향상을 위한 인덱스 설정
-- [ ] 복잡한 쿼리 작성 및 최적화
-- [ ] 데이터 모델링: 유연한 스키마 설계 및 변경
-- [ ] 트랜잭션 처리 및 데이터 일관성 유지 방안 적용
+
+
+
+
+
+
+
+
+
+
+
 
 # ❗️작업 중 발생한 이슈/해결 방법
 
@@ -719,13 +1018,25 @@ homebrew를 재설치 해주었더니 해결됨
 /bin/bash -c "$(curl -fsSL <https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh>)"
 ```
 
+
+
+
+
+
+
+
+
 # 새롭게 알게 된 내용
 
 .
 
+
+
 # Reference
 
 .
+
+
 
 # Takeaway
 
