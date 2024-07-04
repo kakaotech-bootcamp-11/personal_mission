@@ -17,9 +17,9 @@
 
 - [x] CRUD 작업 구현: 데이터 생성(Create), 읽기(Read), 업데이트(Update), 삭제(Delete) 기능 구현
 - [x] 인덱싱 구현: 성능 향상을 위한 인덱스 설정
-- [ ] 복잡한 쿼리 작성 및 최적화
-- [ ] 데이터 모델링: 유연한 스키마 설계 및 변경
-- [ ] 트랜잭션 처리 및 데이터 일관성 유지 방안 적용
+- [x] 복잡한 쿼리 작성 및 최적화
+- [x] 데이터 모델링: 유연한 스키마 설계 및 변경
+- [x] 트랜잭션 처리 및 데이터 일관성 유지 방안 적용
 
 ### Day 3
 
@@ -623,7 +623,7 @@ SELECT * FROM Comment;
 
 - SQL 쿼리:
 
-  ```
+  ```sql
   -- 사용자 ID로 조회
   SELECT * FROM User WHERE user_id = 1;
   
@@ -639,7 +639,7 @@ SELECT * FROM Comment;
 
 - SQL 쿼리:
 
-  ```
+  ```sql
   UPDATE User SET username = 'Alice Wonderland', email = 'alice.w@example.com', password = 'newpassword123' WHERE user_id = 1;
   ```
 
@@ -651,7 +651,7 @@ SELECT * FROM Comment;
 
 - SQL 쿼리:
 
-  ```
+  ```sql
   DELETE FROM User WHERE user_id = 1;
   ```
 
@@ -665,7 +665,7 @@ SELECT * FROM Comment;
 
 - SQL 쿼리:
 
-  ```
+  ```sql
   INSERT INTO Post (title, content, user_id) VALUES ('First Post', 'This is the content of the first post', 1);
   ```
 
@@ -677,7 +677,7 @@ SELECT * FROM Comment;
 
 - SQL 쿼리:
 
-  ```
+  ```sql
   -- 모든 게시글 조회
   SELECT * FROM Post;
   
@@ -693,7 +693,7 @@ SELECT * FROM Comment;
 
 - SQL 쿼리:
 
-  ```
+  ```sql
   UPDATE Post SET title = 'Updated First Post', content = 'This is the updated content of the first post' WHERE post_id = 1;
   ```
 
@@ -705,7 +705,7 @@ SELECT * FROM Comment;
 
 - SQL 쿼리:
 
-  ```
+  ```sql
   DELETE FROM Post WHERE post_id = 1;
   ```
 
@@ -719,7 +719,7 @@ SELECT * FROM Comment;
 
 - SQL 쿼리:
 
-  ```
+  ```sql
   INSERT INTO Comment (content, user_id, post_id) VALUES ('This is a comment on the first post', 2, 1);
   ```
 
@@ -731,7 +731,7 @@ SELECT * FROM Comment;
 
 - SQL 쿼리:
 
-  ```
+  ```sql
   SELECT * FROM Comment WHERE post_id = 1;
   ```
 
@@ -743,7 +743,7 @@ SELECT * FROM Comment;
 
 - SQL 쿼리:
 
-  ```
+  ```sql
   UPDATE Comment SET content = 'This is the updated comment' WHERE comment_id = 1;
   ```
 
@@ -755,7 +755,7 @@ SELECT * FROM Comment;
 
 - SQL 쿼리:
 
-  ```
+  ```sql
   DELETE FROM Comment WHERE comment_id = 1;
   ```
 
@@ -836,7 +836,7 @@ CREATE INDEX idx_comment_post_id ON Comment (post_id);
 
    - 쿼리:
 
-     ```
+     ```sql
      CREATE INDEX idx_user_email ON User (email);
      ```
 
@@ -846,7 +846,7 @@ CREATE INDEX idx_comment_post_id ON Comment (post_id);
 
    - 쿼리:
 
-     ```
+     ```sql
      CREATE INDEX idx_post_user_id ON Post (user_id);
      CREATE INDEX idx_post_title ON Post (title);
      ```
@@ -857,7 +857,7 @@ CREATE INDEX idx_comment_post_id ON Comment (post_id);
 
    - 쿼리:
 
-     ```
+     ```sql
      CREATE INDEX idx_comment_user_id ON Comment (user_id);
      CREATE INDEX idx_comment_post_id ON Comment (post_id);
      ```
@@ -889,7 +889,7 @@ CREATE INDEX idx_comment_post_id ON Comment (post_id);
 
 아래 SQL 쿼리를 SQL 콘솔에 입력하고 실행하여 인덱스를 설정한다.
 
-```
+```sql
 -- 데이터베이스 사용
 USE blogDB;
 
@@ -926,7 +926,7 @@ CREATE INDEX idx_comment_post_id ON Comment (post_id);
 
 혹은 인덱스를 확인할 수 있는 쿼리를 통해 각 테이블마다의 상세 정보를 확인하여 Index 설정 관련 정보를 볼 수 있다.
 
-```
+```sql
 SELECT
     TABLE_NAME,
     INDEX_NAME,
@@ -948,39 +948,291 @@ ORDER BY
 
 
 
-#### 6. 성능 테스트
-
-1. **성능 테스트 시나리오 설정**:
-
-   - 인덱스를 설정하기 전과 후의 쿼리 실행 시간을 비교합니다.
-   - 예를 들어, 사용자 이메일로 검색하는 쿼리를 실행하여 실행 시간을 비교한다.
-
-2. **성능 테스트 쿼리**:
-
-   ```
-   -- 사용자 이메일로 검색
-   SELECT * FROM User WHERE email = 'alice@example.com';
-   
-   -- 작성자별로 게시글 검색
-   SELECT * FROM Post WHERE user_id = 1;
-   
-   -- 게시글 제목으로 검색
-   SELECT * FROM Post WHERE title = 'First Post';
-   
-   -- 게시글별로 댓글 검색
-   SELECT * FROM Comment WHERE post_id = 1;
-   ```
-
-3. **쿼리 실행 및 시간 측정**:
-
-   - 각 쿼리를 실행하고, 실행 시간을 기록합니다.
-   - 인덱스 설정 전과 후의 실행 시간을 비교하여 인덱스의 성능 향상 효과를 확인한다.
-
-
-
 
 
 # 복잡한 쿼리 작성 및 최적화
+
+## 복잡한 쿼리
+
+### 요구 사항 정리
+
+1. 작성자 이름과 각 게시글의 제목 및 내용 조회
+2. 가장 많은 게시글을 작성한 사용자의 정보 조회
+3. 작성자별 게시글 수 조회
+4. 게시글 작성 날짜별로 정렬하여 조회
+5. 각 사용자별로 작성한 게시글 수와 댓글의 수를 계산하고, 게시글과 댓글의 수가 모두 상위 10%에 속하는 사용자를 조회
+
+
+
+### 작성자 이름과 각 게시글의 제목 및 내용 조회
+
+**쿼리 목표**: 여러 테이블 간의 관계를 이용하여 데이터를 결합하는 JOIN 연산을 사용해보기
+
+**사용 예시**: 게시글 리스트에서 게시글을 표시할 때 작성자 이름, 제목, 본문 내용(요약)을 표시한다.
+
+```sql
+SELECT
+    User.username,
+    Post.title,
+    Post.content
+FROM
+    Post
+JOIN
+    User ON Post.user_id = User.user_id;
+```
+
+<img width="673" alt="image" src="https://github.com/kakaotech-bootcamp-11/personal_mission/assets/79521972/b4793709-fb03-4c5b-ba3f-4904d3ecfc02">
+
+
+
+### 가장 많은 게시글을 작성한 사용자의 정보 조회
+
+**쿼리 목표**: 데이터 필터링 및 집계를 위해 서브쿼리를 활용해보기
+
+**사용 예시**: 배움 일기를 가장 많이 작성한 사용자를 표시한다.
+
+```sql
+SELECT
+    User.user_id,
+    User.username,
+    User.email
+FROM
+    User
+WHERE
+    User.user_id = (
+        SELECT
+            Post.user_id
+        FROM
+            Post
+        GROUP BY
+            Post.user_id
+        ORDER BY
+            COUNT(Post.post_id) DESC
+        LIMIT 1
+    );
+```
+
+<img width="484" alt="image" src="https://github.com/kakaotech-bootcamp-11/personal_mission/assets/79521972/5fa6bad5-b4e3-4933-ab42-8c0506a67924">
+
+
+
+### 작성자별 게시글 수 조회
+
+**쿼리 목표**: 그룹화 및 집계 함수를 사용하여 데이터를 요약해보기
+
+**사용 예시**: 사용자별로 아이스브레이킹 카테고리에 작성한 글 수를 확인한다.
+
+```sql
+SELECT
+    User.username,
+    COUNT(Post.post_id) AS post_count
+FROM
+    Post
+JOIN
+    User ON Post.user_id = User.user_id
+GROUP BY
+    User.username;
+```
+
+<img width="332" alt="image" src="https://github.com/kakaotech-bootcamp-11/personal_mission/assets/79521972/bd5e7ec8-8591-4c83-918f-285b901e731f">
+
+
+
+### 게시글 작성 날짜별로 정렬하여 조회
+
+**쿼리 목표**: 데이터를 정렬하여 출력해보기
+
+**사용 예시**: 공지사항을 가장 최신 것이 앞에 오도록 표시한다.
+
+```sql
+SELECT
+    title,
+    content,
+    created_at
+FROM
+    Post
+ORDER BY
+    created_at DESC;
+```
+
+<img width="733" alt="image" src="https://github.com/kakaotech-bootcamp-11/personal_mission/assets/79521972/57d8d0ab-c5cf-4034-9185-b3043b12e4cf">
+
+
+
+### 각 사용자별로 작성한 게시글 수와 댓글의 수를 계산하고, 게시글과 댓글의 수가 모두 상위 10%에 속하는 사용자를 조회
+
+쿼리 목표: 모든 쿼리를 활용하여 매우 복잡한 데이터를 만들어 출력해보기
+
+사용 예시: 참여도가 높은 상위 10% 인원을 랭킹에 표시한다.
+
+```sql
+-- 각 사용자가 작성한 게시글 수와 댓글 수를 계산
+WITH UserPostCount AS (
+    SELECT
+        user_id,
+        COUNT(post_id) AS post_count
+    FROM
+        Post
+    GROUP BY
+        user_id
+),
+UserCommentCount AS (
+    SELECT
+        user_id,
+        COUNT(comment_id) AS comment_count
+    FROM
+        Comment
+    GROUP BY
+        user_id
+),
+-- 게시글 수 상위 10% 사용자
+TopPostUsers AS (
+    SELECT
+        user_id,
+        post_count
+    FROM
+        (
+            SELECT
+                user_id,
+                post_count,
+                PERCENT_RANK() OVER (ORDER BY post_count DESC) AS rank
+            FROM
+                UserPostCount
+        ) AS ranked_post_users
+    WHERE
+        rank <= 0.1
+),
+-- 댓글 수 상위 10% 사용자
+TopCommentUsers AS (
+    SELECT
+        user_id,
+        comment_count
+    FROM
+        (
+            SELECT
+                user_id,
+                comment_count,
+                PERCENT_RANK() OVER (ORDER BY comment_count DESC) AS rank
+            FROM
+                UserCommentCount
+        ) AS ranked_comment_users
+    WHERE
+        rank <= 0.1
+)
+-- 게시글 수와 댓글 수가 모두 상위 10%에 속하는 사용자 조회
+SELECT
+    U.user_id,
+    U.username,
+    TPU.post_count,
+    TCU.comment_count
+FROM
+    TopPostUsers TPU
+JOIN
+    TopCommentUsers TCU ON TPU.user_id = TCU.user_id
+JOIN
+    User U ON U.user_id = TPU.user_id;
+
+```
+
+
+
+## 쿼리 최적화
+
+### 쿼리 최적화 방식 고안
+
+1. 인덱스 활용
+2. 쿼리 리팩토링
+3. 캐싱
+
+
+
+### 인덱스 활용
+
+인덱스 확인
+
+```sql
+SHOW INDEX FROM Post;
+```
+
+
+
+필요한 인덱스 추가
+
+```sql
+CREATE INDEX idx_post_user_id ON Post (user_id);
+CREATE INDEX idx_user_email ON User (email);
+```
+
+
+
+
+
+### 쿼리 리팩토링
+
+- 비효율적인 서브쿼리 제거
+  - 서브 쿼리를 JOIN으로 대체하여 성능을 향상시킬 수 있다.
+
+
+
+- 가장 많은 게시글을 작성한 사용자의 정보 조회
+
+```sql
+-- Before
+SELECT
+    User.user_id,
+    User.username,
+    User.email
+FROM
+    User
+WHERE
+    User.user_id = (
+        SELECT
+            Post.user_id
+        FROM
+            Post
+        GROUP BY
+            Post.user_id
+        ORDER BY
+            COUNT(Post.post_id) DESC
+        LIMIT 1
+    );
+```
+
+
+
+```sql
+-- After
+SELECT
+    User.user_id,
+    User.username,
+    User.email
+FROM
+    User
+JOIN
+    (
+        SELECT
+            Post.user_id,
+            COUNT(Post.post_id) AS post_count
+        FROM
+            Post
+        GROUP BY
+            Post.user_id
+        ORDER BY
+            post_count DESC
+        LIMIT 1
+    ) AS TopUser ON User.user_id = TopUser.user_id;
+```
+
+
+
+### 캐싱
+
+Query Cache 설정
+
+```sql
+SET GLOBAL query_cache_size = 1048576; -- 1MB
+SET GLOBAL query_cache_type = ON;
+```
 
 
 
@@ -988,15 +1240,298 @@ ORDER BY
 
 # 데이터 모델링: 유연한 스키마 설계 및 변경
 
+## 유연한 스키마란?
+
+유연한 데이터베이스 스키마 설계는 시스템의 요구사항이 변화하더라도 쉽게 확장 및 변경할 수 있도록 하는 것을 목표로 한다. 이는 데이터 무결성을 유지하면서도 효율적인 데이터 관리를 가능하게 한다.
+
+
+
+### 1. 유연한 스키마 설계 원칙
+
+- 정규화(Normalization)
+  - 데이터 중복을 최소화하고, 데이터 무결성을 유지하기 위해 테이블을 정규화한다.
+  - ex) 1NF, 2NF, 3NF
+- 비정규화 (Denormalization)
+  - 성능 최적화를 위해 필요에 따라 비정규화를 적용한다. 이는 데이터 중복을 허용하여 읽기 성능을 향상 시킬 수 있다.
+  - 예: 자주 조회되는 데이터를 조인 없이 조회할 수 있도록 테이블에 중복 저장
+- 확장성(Scalability)
+  - 데이터의 증가를 고려하여 테이블을 설계한다.
+  - 파티셔닝, 샤딩
+- 유연성(Flexibility)
+  - 새로운 요구사항을 쉽게 반영할 수 있도록 테이블 설계를 유연하게 유지한다.
+  - 예: JSON 컬럼 사용, 별도의 속성 테이블 사용
+- 참조 무결성 (Referential Integrity)
+  - 데이터 간의 관계를 유지하기 위해 외래 키를 사용한다.
+  - 예: 외래 키 제약 조건을 통해 부모-자식 관계를 보장
+
+
+
+### 유연한 스키마 설계
+
+##### 2.1. 사용자(User) 테이블
+
+- 설계:
+  - `user_id`, `username`, `email`, `password`, `created_at` 컬럼을 포함합니다.
+  - `email` 컬럼에 고유 제약 조건을 설정하여 중복을 방지합니다.
+    - 같은 이메일을 가진 사용자는 없어야 하기 때문
+
+```sql
+CREATE TABLE User (
+  user_id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+
+
+##### 2.2. 게시글(Post) 테이블
+
+- 설계:
+  - `post_id`, `title`, `content`, `user_id`, `created_at`, `updated_at` 컬럼을 포함합니다.
+  - `user_id` 컬럼에 외래 키 제약 조건을 설정하여 참조 무결성을 유지합니다.
+    - user_id는 User 테이블의 주키 속성임
+
+```sql
+CREATE TABLE Post (
+  post_id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(100) NOT NULL,
+  content TEXT NOT NULL,
+  user_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES User(user_id)
+);
+```
+
+
+
+##### 2.3. 댓글(Comment) 테이블
+
+- 설계:
+  - `comment_id`, `content`, `user_id`, `post_id`, `created_at` 컬럼을 포함합니다.
+  - `user_id`와 `post_id` 컬럼에 외래 키 제약 조건을 설정하여 참조 무결성을 유지합니다.
+
+```sql
+CREATE TABLE Comment (
+  comment_id INT AUTO_INCREMENT PRIMARY KEY,
+  content TEXT NOT NULL,
+  user_id INT,
+  post_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES User(user_id),
+  FOREIGN KEY (post_id) REFERENCES Post(post_id)
+);
+```
+
+
+
+### 스키마 변경 방안
+
+유연한 스키마 설계의 핵심 중 하나는 시스템 요구사항 변화에 따라 스키마를 쉽게 변경할 수 있는 것입니다.
+
+
+
+##### 3.1. 컬럼 추가
+
+새로운 기능을 추가하기 위해 테이블에 컬럼을 추가합니다.
+
+**예제**: 사용자 테이블에 `last_login` 컬럼 추가
+
+```sql
+ALTER TABLE User ADD COLUMN last_login TIMESTAMP;
+```
+
+
+
+##### 3.2. 컬럼 삭제
+
+불필요한 데이터를 제거하기 위해 테이블에서 컬럼을 삭제합니다.
+
+**예제**: 게시글 테이블에서 `updated_at` 컬럼 삭제
+
+```sql
+ALTER TABLE Post DROP COLUMN updated_at;
+```
+
+
+
+##### 3.3. 컬럼 변경
+
+컬럼의 데이터 타입이나 제약 조건을 변경합니다.
+
+**예제**: 댓글 테이블의 `content` 컬럼 크기 변경
+
+```sql
+ALTER TABLE Comment MODIFY COLUMN content VARCHAR(500);
+```
+
+
+
+##### 3.4. 인덱스 추가 및 제거
+
+인덱스를 추가하거나 제거하여 성능을 최적화합니다.
+
+**예제**: 게시글 테이블에 `created_at` 컬럼에 인덱스 추가
+
+```sql
+CREATE INDEX idx_post_created_at ON Post (created_at);
+```
+
+**예제**: 게시글 테이블에서 `title` 컬럼 인덱스 제거
+
+```sql
+DROP INDEX idx_post_title ON Post;
+```
+
 
 
 
 
 # 트랜잭션 처리 및 데이터 일관성 유지 방안 적용
 
+## 트랜잭션이란?
 
 
 
+## 트랜잭션의 ACID 특성
+
+- Atomicity(원자성): 트랜잭션의 모든 작업이 성공적으로 완료되거나, 하나라도 실패하면 모든 작업이 취소됩니다.
+- Consistency(일관성): 트랜잭션이 완료되면 데이터베이스는 일관된 상태를 유지합니다.
+- Isolation(격리성): 트랜잭션 간의 독립성을 보장하여 동시에 실행되는 트랜잭션이 서로 영향을 미치지 않도록 합니다.
+- Durabilit(지속성): 트랜잭션이 커밋되면 해당 작업의 결과는 영구적으로 저장됩니다.
+
+
+
+## 트랜잭션 명령어
+
+- `START TRANSACTION` : 트랜잭션을 시작합니다.
+- `COMMIT`: 트랜잭션을 커밋하여 모든 변경 사항을 영구적으로 반영합니다.
+- `ROLLBACK`: 트랜잭션을 롤백하여 모든 변경 사항을 취소합니다.
+
+
+
+## 트랜잭션 적용
+
+- 게시글과 댓글을 동시에 추가하는 트랜잭션
+
+```sql
+START TRANSACTION;
+
+-- 게시글 추가
+INSERT INTO Post (title, content, user_id) VALUES ('New Post', 'Content of the new post', 1);
+
+-- 댓글 추가
+INSERT INTO Comment (content, user_id, post_id) VALUES ('This is a comment', 2, LAST_INSERT_ID());
+
+COMMIT;
+```
+
+
+
+## 데이터 일관성 유지 방안
+
+### 외래 키 제약
+
+외래 키 제약을 사용하여 테이블 간의 참조 무결성을 유지한다.
+
+
+
+Post 테이블의 user_id와 Comment 테이블의 user_id, post_id에 외래 키 제약 설정
+
+```
+ALTER TABLE Post ADD CONSTRAINT fk_post_user FOREIGN KEY (user_id) REFERENCES User(user_id);
+
+ALTER TABLE Comment ADD CONSTRAINT fk_comment_user FOREIGN KEY (user_id) REFERENCES User(user_id);
+ALTER TABLE Comment ADD CONSTRAINT fk_comment_post FOREIGN KEY (post_id) REFERENCES Post(post_id);
+```
+
+
+
+### 트랜잭션 격리 수준 (Transaction Isolation Levels)
+
+트랜잭션 간의 격리 수준을 설정하여 동시에 실행되는 트랜잭션이 서로 영향을 미치지 않도록 한다. MySQL에서는 다음과 같은 격리 수준을 제공한다.
+
+- **READ UNCOMMITTED**: 다른 트랜잭션에서 아직 커밋되지 않은 변경 사항도 읽을 수 있습니다.
+- **READ COMMITTED**: 다른 트랜잭션에서 커밋된 변경 사항만 읽을 수 있습니다.
+- **REPEATABLE READ**: 트랜잭션이 시작된 시점의 데이터 일관성을 보장합니다.
+- **SERIALIZABLE**: 트랜잭션을 직렬화하여 동시 실행을 방지합니다.
+
+
+
+```sql
+SET GLOBAL TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+```
+
+
+
+### 데이터 무결성 제약(Integrity Constraints)
+
+데이터 무결성 제약을 사용하여 데이터의 정확성과 일관성을 유지합니다. 주요 제약 조건은 다음과 같다:
+
+- **NOT NULL**: 컬럼에 NULL 값을 허용하지 않는다.
+- **UNIQUE**: 컬럼 값이 고유해야 한다
+- **CHECK**: 컬럼 값이 특정 조건을 만족해야 한다.
+- **DEFAULT**: 컬럼의 기본값을 설정한다.
+
+
+
+- User 테이블의 email 컬럼에 NOT NULL 및 UNIQUE 제약 설정
+
+```sql
+ALTER TABLE User MODIFY COLUMN email VARCHAR(100) NOT NULL UNIQUE;
+```
+
+
+
+### 트랜잭션 처리 예제
+
+목표: 블로그 시스템에서 트랜잭션을 사용하여 데이터 일관성을 유지하는 예제
+
+시나리오: 사용자가 게시글을 작성하고, 동시에 여러 댓글을 추가하는 경우를 트랜잭션으로 처리한다.
+
+```sql
+START TRANSACTION;
+
+-- 게시글 추가
+INSERT INTO Post (title, content, user_id) VALUES ('Complex Transaction Post', 'Content for complex transaction post', 1);
+
+-- 마지막으로 삽입된 게시글 ID 가져오기
+SET @post_id = LAST_INSERT_ID();
+
+-- 댓글 추가
+INSERT INTO Comment (content, user_id, post_id) VALUES ('First comment', 2, @post_id);
+INSERT INTO Comment (content, user_id, post_id) VALUES ('Second comment', 3, @post_id);
+INSERT INTO Comment (content, user_id, post_id) VALUES ('Third comment', 2, @post_id);
+
+COMMIT;
+```
+
+
+
+만약 트랜잭션 내에서 오류가 발생하면, 모든 작업을 롤백하여 데이터 일관성을 유지할 수 있다.
+
+예제(롤백):
+
+```sql
+START TRANSACTION;
+
+-- 게시글 추가
+INSERT INTO Post (title, content, user_id) VALUES ('Transaction with Error', 'Content for transaction with error', 1);
+
+-- 마지막으로 삽입된 게시글 ID 가져오기
+SET @post_id = LAST_INSERT_ID();
+
+-- 댓글 추가 (여기서 의도적으로 오류 발생, user_id = 999는 존재하지 않는 사용자 ID)
+INSERT INTO Comment (content, user_id, post_id) VALUES ('First comment', 2, @post_id);
+INSERT INTO Comment (content, user_id, post_id) VALUES ('Second comment', 999, @post_id); -- 오류 발생
+INSERT INTO Comment (content, user_id, post_id) VALUES ('Third comment', 2, @post_id);
+
+-- 오류 발생 시 롤백
+ROLLBACK;
+```
 
 
 
@@ -1041,3 +1576,33 @@ homebrew를 재설치 해주었더니 해결됨
 # Takeaway
 
 .
+
+
+
+#### 6. 성능 테스트
+
+1. **성능 테스트 시나리오 설정**:
+
+   - 인덱스를 설정하기 전과 후의 쿼리 실행 시간을 비교합니다.
+   - 예를 들어, 사용자 이메일로 검색하는 쿼리를 실행하여 실행 시간을 비교한다.
+
+2. **성능 테스트 쿼리**:
+
+   ```sql
+   -- 사용자 이메일로 검색
+   SELECT * FROM User WHERE email = 'alice@example.com';
+   
+   -- 작성자별로 게시글 검색
+   SELECT * FROM Post WHERE user_id = 1;
+   
+   -- 게시글 제목으로 검색
+   SELECT * FROM Post WHERE title = 'First Post';
+   
+   -- 게시글별로 댓글 검색
+   SELECT * FROM Comment WHERE post_id = 1;
+   ```
+
+3. **쿼리 실행 및 시간 측정**:
+
+   - 각 쿼리를 실행하고, 실행 시간을 기록합니다.
+   - 인덱스 설정 전과 후의 실행 시간을 비교하여 인덱스의 성능 향상 효과를 확인한다.
