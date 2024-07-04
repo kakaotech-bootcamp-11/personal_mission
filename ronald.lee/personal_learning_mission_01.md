@@ -3,7 +3,7 @@
 1. AWS, Google Cloud, Azure 중 하나를 선택하여 계정을 생성합니다.
 저는 Google Cloud를 선택해서 계정을 생성하였습니다.
 
-![Untitled](../personal_learning_mission_01/Untitled.png)
+![Untitled](./personal_learning_mission_01/Untitled.png)
 
 2. 선택한 클라우드 서비스 제공자에서 가상 머신(VM)을 생성하고 설정합니다.
 
