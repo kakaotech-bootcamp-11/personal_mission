@@ -42,4 +42,84 @@ sudo apt update
 sudo apt install -y python3-pip
 pip3 install torch transformers accelerate
 ```
-4. 
+4. 모델 로드 및 실행
+아래 파이썬 코드를 EC2 인스턴스에 넣고 실행
+```python
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM
+
+model_id = 'Bllossom/llama-3-Korean-Bllossom-70B'
+
+# 토크나이저와 모델 로드
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model = AutoModelForCausalLM.from_pretrained(
+    model_id,
+    torch_dtype=torch.float16,
+    device_map="auto"
+)
+
+# 모델을 평가 모드로 설정
+model.eval()
+
+# 초기 시스템 프롬프트 설정
+PROMPT = '''You are a helpful AI assistant. Please answer the user's questions kindly. 당신은 유능한 AI 어시스턴트 입니다. 사용자의 질문에 대해 친절하게 답변해주세요.'''
+
+# 대화 이력 저장을 위한 리스트 초기화
+conversation_history = [
+    {"role": "system", "content": f"{PROMPT}"}
+]
+
+def generate_response(conversation_history):
+    # 대화 이력을 텍스트 형식으로 변환
+    chat_history = ""
+    for message in conversation_history:
+        if message["role"] == "system":
+            chat_history += f"System: {message['content']}\n"
+        elif message["role"] == "user":
+            chat_history += f"User: {message['content']}\n"
+        elif message["role"] == "assistant":
+            chat_history += f"Assistant: {message['content']}\n"
+
+    input_ids = tokenizer.encode(chat_history, return_tensors="pt").to(model.device)
+
+    # 모델을 사용하여 응답 생성
+    outputs = model.generate(
+        input_ids,
+        max_new_tokens=256,
+        eos_token_id=tokenizer.eos_token_id,
+        pad_token_id=tokenizer.eos_token_id,
+        do_sample=True,
+        temperature=0.6,
+        top_p=0.9,
+        repetition_penalty=1.1
+    )
+
+    # 생성된 응답 디코딩
+    response = tokenizer.decode(outputs[0][input_ids.shape[-1]:], skip_special_tokens=True)
+    return response
+
+print("챗봇을 시작합니다. '종료'라고 입력하면 대화가 종료됩니다.")
+user_input = ""
+
+while user_input.lower() != "종료":
+    # 사용자로부터 입력 받기
+    user_input = input("사용자: ")
+    if user_input.lower() == "종료":
+        break
+    
+    # 대화 이력에 사용자 입력 추가
+    conversation_history.append({"role": "user", "content": f"{user_input}"})
+    
+    # 사용자 입력에 대한 챗봇 응답 생성
+    chatbot_response = generate_response(conversation_history)
+    
+    # 대화 이력에 챗봇 응답 추가
+    conversation_history.append({"role": "assistant", "content": f"{chatbot_response}"})
+    
+    # 챗봇 응답 출력
+    print(f"챗봇: {chatbot_response}")
+
+print("대화를 종료합니다. 감사합니다!")
+```
+
+
