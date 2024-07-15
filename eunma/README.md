@@ -25,4 +25,21 @@ user : 오늘의 날씨 알려줘
 ### 해결 방안
 * AWS 
 1. EC2 인스턴스 생성
-- 
+  - AWS Mangement Console에서 작업 시작
+  - EC2 대시보드의 Lunch Instance
+  - AMI선택 후 Deep learning AMI(Ubuntu) 버전
+  - 인스턴스 유형을 GPU사용을 위한 p2/p3/g4계열 선택
+
+2. EC2 인스턴스 접속
+   - SSH로 인스턴스 접속
+```bash
+ssh -i /path/to/your-key.pem ubuntu@your-ec2-public-dns
+```
+
+3. 환경설정 및 라이브러리 설치
+```bash
+sudo apt update
+sudo apt install -y python3-pip
+pip3 install torch transformers accelerate
+```
+4. 
