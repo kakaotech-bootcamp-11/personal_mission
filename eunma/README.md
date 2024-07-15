@@ -13,6 +13,7 @@ https://colab.research.google.com/drive/1fBOzUVZ6NRKk_ugeoTbAOokWKqSN47IG?usp=sh
 
 
 user : 오늘의 날씨 알려줘
+
 봇 : 죄송하지만 저는 실시간 데이터를 접근할 수 없기 때문에 현재 날씨 정보를 제공할 수 없습니다. 대신 여러분이 살고 있는 지역의 날씨를 확인하고 싶다면, 인터넷 검색 엔진이나 모바일 애플리케이션을 통해 최신 정보를 얻으실 수 있습니다.
 
 답변이 gpt 3.5에 전혀 밀리지 않은 언어생성능력을 보여줌
